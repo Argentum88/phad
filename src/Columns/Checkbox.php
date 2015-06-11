@@ -18,7 +18,10 @@ class Checkbox extends BaseColumn
 	{
 		parent::initialize();
 
-        $this->di->get('assets')->collection('dataTablesJs')->addJs('backend-assets/columns/checkbox.js');
+        $this->di->get('assets')->collection('checkboxJs')
+            ->setTargetPath('checkbox.js')
+            ->setTargetUri('backend-assets/checkbox.js')
+            ->addJs('js/columns/checkbox.js');
 	}
 
 	/**

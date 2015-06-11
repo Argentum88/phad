@@ -16,9 +16,9 @@
     <?= $this->assets->outputCss('backend_css') ?>
 
     <?php
-        try {
-            $this->assets->outputCss('dataTablesCss');
-        } catch (\Exception $e) {}
+        //try {
+            $this->assets->outputCss('displayAsyncCss');
+        //} catch (\Exception $e) {}
     ?>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -54,10 +54,12 @@
 <?= $this->assets->outputJs('backend_js') ?>
 
 <?php
-    try {
+    //try {
         $this->assets->outputJs('displayAsyncJs');
-        $this->assets->outputJs('dataTablesJs');
-    } catch (\Exception $e) {}
+        $this->assets->outputJs('baseColumnFilterJs');
+        $this->assets->outputJs('textColumnFilterJs');
+        $this->assets->outputJs('checkboxJs');
+    //} catch (\Exception $e) {}
 ?>
 
 </body>

@@ -13,7 +13,10 @@ class Text extends BaseColumnFilter
 	{
 		parent::initialize();
 
-        $this->di->get('assets')->collection('dataTablesJs')->addJs('backend-assets/columnfilters/text.js');
+        $this->di->get('assets')->collection('textColumnFilterJs')
+            ->setTargetPath('textColumnFilter.js')
+            ->setTargetUri('backend-assets/textColumnFilter.js')
+            ->addJs('js/columnfilters/text.js');
 	}
 
 	public function placeholder($placeholder = null)

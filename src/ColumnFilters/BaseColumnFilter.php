@@ -22,7 +22,10 @@ abstract class BaseColumnFilter implements Renderable, ColumnFilterInterface
 	 */
 	public function initialize()
 	{
-        $this->di->get('assets')->collection('dataTablesJs')->addJs('backend-assets/columnfilters/base.js');
+        $this->di->get('assets')->collection('baseColumnFilterJs')
+            ->setTargetPath('baseColumnFilter.js')
+            ->setTargetUri('backend-assets/baseColumnFilter.js')
+            ->addJs('js/columnfilters/base.js');
 	}
 
 

@@ -70,11 +70,16 @@ class DisplayDatatablesAsync implements Renderable, DisplayInterface
             ->addJs('js/datatables/jquery.dataTables.min.js')
             ->addJs('js/datatables/jquery.dataTables_bootstrap.js')
             ->addJs('js/datatables/init.js')
-            ->addJs('notify-combined.min.js')
+            ->addJs('js/notify-combined.min.js')
             ->join(true)
             ->addFilter(new AssetsNullFilter());
 
-        $this->di->get('assets')->collection('dataTablesCss')->addCss('backend-assets/dataTables.bootstrap.css');
+        $this->di->get('assets')->collection('displayAsyncCss')
+            ->setTargetPath('displayAsync_final.css')
+            ->setTargetUri('backend-assets/displayAsync_final.css')
+            ->addCss('css/datatables/dataTables.bootstrap.css')
+            ->join(true)
+            ->addFilter(new AssetsNullFilter());
     }
 
     protected function initializeFilters()
