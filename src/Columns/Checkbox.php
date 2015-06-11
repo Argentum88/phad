@@ -1,5 +1,7 @@
 <?php namespace Argentum88\Phad\Columns;
 
+use Phalcon\Assets\Filters\None as AssetsNullFilter;
+
 class Checkbox extends BaseColumn
 {
 
@@ -21,7 +23,9 @@ class Checkbox extends BaseColumn
         $this->di->get('assets')->collection('checkboxJs')
             ->setTargetPath('checkbox.js')
             ->setTargetUri('backend-assets/checkbox.js')
-            ->addJs('js/columns/checkbox.js');
+            ->addJs('js/columns/checkbox.js')
+            ->join(true)
+            ->addFilter(new AssetsNullFilter());
 	}
 
 	/**

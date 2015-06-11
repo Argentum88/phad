@@ -1,5 +1,7 @@
 <?php namespace Argentum88\Phad\ColumnFilters;
 
+use Phalcon\Assets\Filters\None as AssetsNullFilter;
+
 class Text extends BaseColumnFilter
 {
 
@@ -16,7 +18,9 @@ class Text extends BaseColumnFilter
         $this->di->get('assets')->collection('textColumnFilterJs')
             ->setTargetPath('textColumnFilter.js')
             ->setTargetUri('backend-assets/textColumnFilter.js')
-            ->addJs('js/columnfilters/text.js');
+            ->addJs('js/columnfilters/text.js')
+            ->join(true)
+            ->addFilter(new AssetsNullFilter());
 	}
 
 	public function placeholder($placeholder = null)
