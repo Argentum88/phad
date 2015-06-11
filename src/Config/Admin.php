@@ -15,6 +15,8 @@ use Phalcon\DI;
 use Phalcon\Validation\Validator\Email;
 use Phalcon\Validation\Validator\PresenceOf;
 
+
+
 Admin::model('App\User')->title('Users')->display(function ()
     {
         $display = new DisplayDatatablesAsync();

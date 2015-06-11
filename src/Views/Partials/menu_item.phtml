@@ -1,0 +1,15 @@
+<li>
+	<a href="<?= $url ?>">
+		<i class="fa fa-fw <?= $icon ?>"></i> <?= $label ?>
+		<?php if (count($items) > 0): ?>
+			<span class="fa arrow"></span>
+		<?php endif ?>
+	</a>
+	<?php if (count($items) > 0): ?>
+		<ul class="nav <?php $levelArray = ['', 'nav-second-level', 'nav-third-level']; echo $levelArray[$level]; ?> collapse">
+			<?php foreach ($items as $item): ?>
+				<?= $item ?>
+			<?php endforeach ?>
+		</ul>
+	<?php endif ?>
+</li>

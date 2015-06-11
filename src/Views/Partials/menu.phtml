@@ -1,0 +1,13 @@
+<?php
+    use Argentum88\Phad\Admin;
+?>
+
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+            <?php foreach (Admin::instance()->getMenu() as $item): ?>
+                <?= $item ?>
+            <?php endforeach ?>
+        </ul>
+    </div>
+</div>

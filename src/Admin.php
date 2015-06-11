@@ -1,8 +1,6 @@
 <?php namespace Argentum88\Phad;
 
-use Illuminate\View\View;
-use SleepingOwl\Admin\Interfaces\TemplateInterface;
-use SleepingOwl\Admin\Menu\MenuItem;
+use Argentum88\Phad\MenuItem;
 use Argentum88\Phad\ModelConfiguration;
 
 class Admin
@@ -10,15 +8,13 @@ class Admin
 	/**
 	 * @var Admin
 	 */
-	protected static $instance;
-	/**
+    protected static $instance;
+
+    /**
 	 * @var ModelConfiguration[]
 	 */
 	protected $models = [];
-	/**
-	 * @var TemplateInterface
-	 */
-	protected $template;
+
 	/**
 	 * @var MenuItem
 	 */
@@ -111,19 +107,6 @@ class Admin
 	}
 
 	/**
-	 * @return TemplateInterface
-	 */
-	public function template()
-	{
-		if (is_null($this->template))
-		{
-			$templateClass = config('admin.template');
-			$this->template = app($templateClass);
-		}
-		return $this->template;
-	}
-
-	/**
 	 * @param string|null $model
 	 * @return MenuItem
 	 */
@@ -139,16 +122,4 @@ class Admin
 	{
 		return $this->menu->items();
 	}
-
-	/**
-	 * @param $content
-	 * @param string|null $title
-	 * @return View
-	 */
-	public static function view($content, $title = null)
-	{
-		$controller = app('SleepingOwl\Admin\Http\Controllers\AdminController');
-		return $controller->render($title, $content);
-	}
-
 }
