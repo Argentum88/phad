@@ -16,9 +16,9 @@
     <?= $this->assets->outputCss('backend_css') ?>
 
     <?php
-        //try {
+        try {
             $this->assets->outputCss('displayAsyncCss');
-        //} catch (\Exception $e) {}
+        } catch (\Exception $e) {}
     ?>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -51,15 +51,25 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/build/js/lib/jquery.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
+
 <?= $this->assets->outputJs('backend_js') ?>
 
 <?php
-    //try {
+    try {
         $this->assets->outputJs('displayAsyncJs');
+    } catch (\Exception $e) {}
+
+    try {
         $this->assets->outputJs('baseColumnFilterJs');
+    } catch (\Exception $e) {}
+
+    try {
         $this->assets->outputJs('textColumnFilterJs');
+    } catch (\Exception $e) {}
+
+    try {
         $this->assets->outputJs('checkboxJs');
-    //} catch (\Exception $e) {}
+    } catch (\Exception $e) {}
 ?>
 
 </body>
