@@ -1,4 +1,4 @@
-<?php namespace App\Modules\Backend\Interfaces;
+<?php namespace Argentum88\Phad\Interfaces;
 
 interface ColumnInterface
 {

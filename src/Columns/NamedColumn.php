@@ -1,4 +1,4 @@
-<?php namespace App\Modules\Backend\Columns;
+<?php namespace Argentum88\Phad\Columns;
 
 use Phalcon\Mvc\Model\Resultset as Collection;
 

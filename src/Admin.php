@@ -3,7 +3,7 @@
 use Illuminate\View\View;
 use SleepingOwl\Admin\Interfaces\TemplateInterface;
 use SleepingOwl\Admin\Menu\MenuItem;
-use App\Modules\Backend\ModelConfiguration;
+use Argentum88\Phad\ModelConfiguration;
 
 class Admin
 {

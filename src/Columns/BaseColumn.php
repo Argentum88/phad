@@ -1,9 +1,9 @@
-<?php namespace App\Modules\Backend\Columns;
+<?php namespace Argentum88\Phad\Columns;
 
-use App\Modules\Backend\Interfaces\Renderable;
-use App\Modules\Backend\Admin;
-use App\Modules\Backend\Interfaces\ColumnInterface;
-use App\Modules\Backend\ModelConfiguration;
+use Argentum88\Phad\Interfaces\Renderable;
+use Argentum88\Phad\Admin;
+use Argentum88\Phad\Interfaces\ColumnInterface;
+use Argentum88\Phad\ModelConfiguration;
 use Phalcon\DI;
 
 abstract class BaseColumn implements Renderable, ColumnInterface

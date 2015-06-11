@@ -1,7 +1,7 @@
-<?php namespace App\Modules\Backend\ColumnFilters;
+<?php namespace Argentum88\Phad\ColumnFilters;
 
-use App\Modules\Backend\Interfaces\ColumnFilterInterface;
-use App\Modules\Backend\Interfaces\Renderable;
+use Argentum88\Phad\Interfaces\ColumnFilterInterface;
+use Argentum88\Phad\Interfaces\Renderable;
 use Phalcon\DI;
 
 abstract class BaseColumnFilter implements Renderable, ColumnFilterInterface

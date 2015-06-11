@@ -1,7 +1,7 @@
-<?php namespace App\Modules\Backend\FormItems;
+<?php namespace Argentum88\Phad\FormItems;
 
-use App\Modules\Backend\Interfaces\Renderable;
-use App\Modules\Backend\Interfaces\FormItemInterface;
+use Argentum88\Phad\Interfaces\Renderable;
+use Argentum88\Phad\Interfaces\FormItemInterface;
 use Phalcon\DI;
 
 abstract class BaseFormItem implements Renderable, FormItemInterface

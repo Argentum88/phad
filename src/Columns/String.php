@@ -1,4 +1,4 @@
-<?php namespace App\Modules\Backend\Columns;
+<?php namespace Argentum88\Phad\Columns;
 
 class String extends NamedColumn
 {

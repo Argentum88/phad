@@ -1,4 +1,4 @@
-<?php namespace App\Modules\Backend\Filters;
+<?php namespace Argentum88\Phad\Filters;
 
 class FilterField extends FilterBase
 {

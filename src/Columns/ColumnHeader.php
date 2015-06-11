@@ -1,6 +1,6 @@
-<?php namespace App\Modules\Backend\Columns;
+<?php namespace Argentum88\Phad\Columns;
 
-use App\Modules\Backend\Interfaces\Renderable;
+use Argentum88\Phad\Interfaces\Renderable;
 
 class ColumnHeader implements Renderable
 {

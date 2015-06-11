@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Backend\Controllers {
+namespace Argentum88\Phad\Controllers {
 
     use Phalcon\Mvc\View;
 

@@ -1,8 +1,8 @@
-<?php namespace App\Modules\Backend;
+<?php namespace Argentum88\Phad;
 
-use App\Helpers\Str;
-use App\Modules\Backend\Interfaces\DisplayInterface;
-use App\Modules\Backend\Interfaces\FormInterface;
+use Argentum88\Phad\Helpers\Str;
+use Argentum88\Phad\Interfaces\DisplayInterface;
+use Argentum88\Phad\Interfaces\FormInterface;
 use Phalcon\DI;
 
 class ModelConfiguration

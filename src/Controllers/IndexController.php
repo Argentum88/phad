@@ -2,8 +2,8 @@
 
 namespace Argentum88\Phad\Controllers {
 
-    use App\Modules\Backend\Admin;
-    use \App\Modules\Backend\Interfaces\Renderable;
+    use Argentum88\Phad\Admin;
+    use Argentum88\Phad\Interfaces\Renderable;
 
     /**
      * Class IndexController

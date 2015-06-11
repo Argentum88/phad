@@ -1,4 +1,4 @@
-<?php namespace App\Modules\Backend\ColumnFilters;
+<?php namespace Argentum88\Phad\ColumnFilters;
 
 class Text extends BaseColumnFilter
 {

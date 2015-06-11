@@ -1,6 +1,6 @@
-<?php namespace App\Modules\Backend\Columns;
+<?php namespace Argentum88\Phad\Columns;
 
-use App\Modules\Backend\Admin;
+use Argentum88\Phad\Admin;
 
 class Filter extends NamedColumn
 {

@@ -1,6 +1,6 @@
-<?php namespace App\Modules\Backend\Filters;
+<?php namespace Argentum88\Phad\Filters;
 
-use App\Modules\Backend\Interfaces\FilterInterface;
+use Argentum88\Phad\Interfaces\FilterInterface;
 use Phalcon\DI;
 
 abstract class FilterBase implements FilterInterface

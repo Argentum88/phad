@@ -1,4 +1,4 @@
-<?php namespace App\Modules\Backend;
+<?php namespace Argentum88\Phad;;
 
 use Phalcon\DI;
 

@@ -1,4 +1,4 @@
-<?php namespace App\Modules\Backend\FormItems;
+<?php namespace Argentum88\Phad\FormItems;
 
 class Text extends NamedFormItem
 {

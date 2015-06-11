@@ -1,16 +1,16 @@
 <?php
 
-use App\Modules\Backend\Admin;
-use App\Modules\Backend\Columns\String;
-use App\Modules\Backend\Columns\Action;
-use App\Modules\Backend\Columns\Checkbox;
-use App\Modules\Backend\Columns\Count;
-use App\Modules\Backend\Columns\Filter;
-use App\Modules\Backend\ColumnFilters\Text as TextFilter;
-use App\Modules\Backend\DisplayDatatablesAsync;
-use App\Modules\Backend\FormDefault;
-use App\Modules\Backend\FormItems\Text;
-use App\Modules\Backend\Filters\FilterField;
+use Argentum88\Phad\Admin;
+use Argentum88\Phad\Columns\String;
+use Argentum88\Phad\Columns\Action;
+use Argentum88\Phad\Columns\Checkbox;
+use Argentum88\Phad\Columns\Count;
+use Argentum88\Phad\Columns\Filter;
+use Argentum88\Phad\ColumnFilters\Text as TextFilter;
+use Argentum88\Phad\DisplayDatatablesAsync;
+use Argentum88\Phad\FormDefault;
+use Argentum88\Phad\FormItems\Text;
+use Argentum88\Phad\Filters\FilterField;
 use Phalcon\DI;
 use Phalcon\Validation\Validator\Email;
 use Phalcon\Validation\Validator\PresenceOf;

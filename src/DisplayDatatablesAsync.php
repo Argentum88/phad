@@ -1,12 +1,12 @@
-<?php namespace App\Modules\Backend;
+<?php namespace Argentum88\Phad;
 
-use App\Modules\Backend\Columns\Control;
-use App\Modules\Backend\Columns\String;
-use App\Modules\Backend\Columns\NamedColumn;
-use App\Modules\Backend\Interfaces\Renderable;
-use App\Modules\Backend\Interfaces\DisplayInterface;
-use App\Modules\Backend\Interfaces\ColumnInterface;
-use App\Modules\Backend\Interfaces\ColumnFilterInterface;
+use Argentum88\Phad\Columns\Control;
+use Argentum88\Phad\Columns\String;
+use Argentum88\Phad\Columns\NamedColumn;
+use Argentum88\Phad\Interfaces\Renderable;
+use Argentum88\Phad\Interfaces\DisplayInterface;
+use Argentum88\Phad\Interfaces\ColumnInterface;
+use Argentum88\Phad\Interfaces\ColumnFilterInterface;
 use Phalcon\DI;
 
 class DisplayDatatablesAsync implements Renderable, DisplayInterface
