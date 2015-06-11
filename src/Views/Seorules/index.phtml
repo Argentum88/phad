@@ -1,0 +1,47 @@
+<?php
+/**
+ * @var $pager Mytutcodim\Paginator\Pager
+ * @var $this Phalcon\Mvc\View
+ */
+?>
+<?php if (count($pager) == 0): ?>
+    <p>Жаль, но тут ничего нет
+<?php else: ?>
+    <div class="content-box">
+        <div class="panel-heading">
+            <div class="panel-title">SEO правила</div>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-responsive table-hover">
+                    <thead>
+                    <tr>
+                        <th data-width="10">#id</th>
+                        <th>Заголовок</th>
+                        <th>Правило</th>
+                        <th>H1</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($pager as $item): ?>
+                        <?php $href = $this->tag->linkTo([['for'=>'backend-seorules-edit','id'=>$item->id],$item->title]) ?>
+                        <tr>
+                            <td><?php echo $item->id ?></td>
+                            <td><?php echo $href ?></td>
+                            <td><?php echo $item->pattern ?></td>
+                            <td><?php echo $item->seo_h1 ?></td>
+                        </tr>
+                    <?php endforeach ?>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            <?= !$pager->haveToPaginate() ? '' : $pager->getLayout() ?>
+                        </td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+<?php endif ?>

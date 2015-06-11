@@ -1,0 +1,29 @@
+<?php
+/**
+ * @var $form \Core\Forms\Decorator\BootstrapDecorator
+ * @var $this  Phalcon\Mvc\View
+ * @var $key  string
+ */
+?>
+<div class="content-box">
+    <div class="panel-heading">
+        <div class="panel-title">Пользователь</div>
+    </div>
+    <div class="panel-body">
+        <?= $form->renderForm(); ?>
+        <form action="<?php echo $this->url->get(['for' => 'backend-user-delete', 'id' => $key]) ?>" method="post">
+            <input id="delete" type="submit" value="Удалить"/>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var elem = document.getElementById('delete');
+
+    var confirmIt = function (e) {
+
+        if (!confirm('Вы уверены?')) e.preventDefault();
+    };
+
+    elem.addEventListener('click', confirmIt, false);
+</script>

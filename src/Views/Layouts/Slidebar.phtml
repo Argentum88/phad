@@ -1,0 +1,13 @@
+<?php
+/**
+ * @var $this \Phalcon\Mvc\View
+ *
+ */
+?>
+<div class="col-md-2">
+    <?php $this->partial('sidebar')?>
+</div>
+<div class="col-md-10">
+    <?php $this->flashSession->output() ?>
+    <?= $this->getContent(); ?>
+</div>

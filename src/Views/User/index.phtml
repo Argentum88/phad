@@ -1,0 +1,68 @@
+<?php
+/**
+ * @var $pager App\Modules\Backend\Library\Paginator\Pager
+ * @var $this  Phalcon\Mvc\View
+ * @var $model Core\Mvc\User\UsersAuth\Models\Users
+ */
+?>
+<div class="content-box">
+    <div class="panel-heading">
+        <div class="panel-title">Пользователи</div>
+        <div class="panel-options">
+            <form method="get">
+                <input id="search" name="search" type="text" placeholder="поиск"/>
+                <input type="submit" value="Искать"/>
+            </form>
+        </div>
+    </div>
+    <div class="panel-body">
+        Всего(<?= $model::count() ?>),
+        <a href="<?= $this->url->get(['for' => 'backend-user-main'], ['role' => 'moderator']) ?>">Модераторов(<?= $model::count("role = 'moderator'") ?>)</a>,
+        <a href="<?= $this->url->get(['for' => 'backend-user-main'], ['role' => 'admin']) ?>">Админов(<?= $model::count("role = 'admin'") ?>)</a>,
+        <a href="<?= $this->url->get(['for' => 'backend-user-main'], ['banned' => 1]) ?>">Забаненных пользователей(<?= $model::count("banned = 1") ?>)</a>,
+        <a href="<?= $this->url->get(['for' => 'backend-user-main'], ['activated' => 1]) ?>">Активированных пользователей(<?= $model::count("activated = 1") ?>)</a>,
+        <a href="<?= $this->url->get(['for' => 'backend-user-main'], ['activated' => 0]) ?>">Неактивированных пользователей(<?= $model::count("activated = 0") ?>)</a>
+        <div class="table-responsive">
+            <table class="table table-striped table-responsive table-hover">
+                <thead>
+                <tr>
+                    <th data-width="10">id</th>
+                    <th>Имя</th>
+                    <th>Email</th>
+                    <th>Роль</th>
+                    <th>Activated</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php if (count($pager) == 0): ?>
+                <tr>
+                    <td></td>
+                    <td colspan="4">Записей нет</td>
+                <tr>
+                <?php else:
+                foreach ($pager as $item): ?>
+                    <?php $href = $this->tag->linkTo([['for'=>'backend-user-edit','id'=>$item->id], $item->id]) ?>
+                    <tr>
+                        <td><?php echo $href ?></td>
+                        <td><?php echo $item->name ?></td>
+                        <td><?php echo $item->email ?></td>
+                        <td><?php echo $item->role ?></td>
+                        <td><?php echo $item->activated ?></td>
+                    </tr>
+                <?php endforeach;
+                endif; ?>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="4">
+                        <?= !$pager->haveToPaginate() ? '' : $pager->getLayout() ?>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+            <a href="user/create">
+                <button>Добавить пользователя</button>
+            </a>
+        </div>
+    </div>
+</div>

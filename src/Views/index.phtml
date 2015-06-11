@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * @var $this \Phalcon\Mvc\View
+ *
+ */
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Тут тебе рады и любят</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8"/>
+
+    <?= $this->app->getEnvironment() == 'development' ? $this->assets->outputCss('backend_css')
+        : '<link rel="stylesheet" type="text/css" href="/backend-assets/final.css" />' ?>
+
+    <?php
+        try {
+            $this->assets->outputCss('dataTablesCss');
+        } catch (\Exception $e) {}
+    ?>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <!-- Logo -->
+                <div class="logo">
+                    <h1><a href="/admin">Admin</a></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page-content container">
+    <div class="row">
+        <?= $this->getContent(); // главное содержимое ?>
+    </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/build/js/lib/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<?= $this->app->getEnvironment() == 'development' ? $this->assets->outputJs('backend_js')
+    : '<script type="text/javascript" src="/backend-assets/final.js"></script>' ?>
+
+<?php
+    try {
+        $this->assets->outputJs('dataTablesJs');
+    } catch (\Exception $e) {}
+?>
+
+</body>
+</html>

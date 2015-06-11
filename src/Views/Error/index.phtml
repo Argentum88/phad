@@ -1,0 +1,7 @@
+<?php echo $error->message(); ?>
+<?php if (APPLICATION_ENV != \Phalcon\Error\Application::ENV_PRODUCTION): ?>
+    <br>in <?php echo $error->file(); ?> on line <?php echo $error->line(); ?><br>
+    <?php if ($error->isException()) { ?>
+        <pre><?php echo $error->exception()->getTraceAsString(); ?></pre>
+    <?php } ?>
+<?php endif; ?>

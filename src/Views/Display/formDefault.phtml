@@ -1,0 +1,9 @@
+<form action="<?= $action ?>" method="POST">
+	<?php foreach ($items as $item): ?>
+        <?= $item->render() ?>
+    <?php endforeach ?>
+	<div class="form-group">
+		<input type="submit" value="submit" class="btn btn-primary"/>
+		<a href="<?= $backUrl ?>" class="btn btn-default">cancel</a>
+	</div>
+</form>

@@ -1,0 +1,12 @@
+<td>
+	<div class="text-right">
+		<a class="btn btn-default btn-sm btnAction" href="<?= $url ?>" data-href="<?= $url ?>" <?php if ($style == 'short'): ?> data-toggle="tooltip" title="<?= $value ?>" <?php endif ?> target="<?= $target ?>">
+			<?php if ($icon): ?>
+				<i class="fa <?= $icon ?>"></i>
+            <?php endif ?>
+            <?php if ($style == 'long'): ?>
+                <?= $value ?>
+            <?php endif ?>
+		</a>
+	</div>
+</td>
