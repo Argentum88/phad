@@ -22,7 +22,7 @@ class Admin
 
 	function __construct()
 	{
-		//$this->menu = static::menu();
+		$this->menu = static::menu();
 	}
 
 	/**
