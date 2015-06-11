@@ -13,8 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8"/>
 
-    <?= $this->app->getEnvironment() == 'development' ? $this->assets->outputCss('backend_css')
-        : '<link rel="stylesheet" type="text/css" href="/backend-assets/final.css" />' ?>
+    <?= $this->assets->outputCss('backend_css') ?>
 
     <?php
         try {
@@ -52,11 +51,11 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="/build/js/lib/jquery.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<?= $this->app->getEnvironment() == 'development' ? $this->assets->outputJs('backend_js')
-    : '<script type="text/javascript" src="/backend-assets/final.js"></script>' ?>
+<?= $this->assets->outputJs('backend_js') ?>
 
 <?php
     try {
+        $this->assets->outputJs('displayAsyncJs');
         $this->assets->outputJs('dataTablesJs');
     } catch (\Exception $e) {}
 ?>

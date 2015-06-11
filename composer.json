@@ -9,6 +9,10 @@
         "ext-pdo_mysql": "*"
     },
 
+    "require-dev": {
+        "digitronac/phalcon-ide-stubs": "1.3.2"
+    },
+
     "autoload": {
         "psr-4": {
             "Argentum88\\Phad\\": "src/"

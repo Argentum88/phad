@@ -7,6 +7,7 @@ use Argentum88\Phad\Interfaces\Renderable;
 use Argentum88\Phad\Interfaces\DisplayInterface;
 use Argentum88\Phad\Interfaces\ColumnInterface;
 use Argentum88\Phad\Interfaces\ColumnFilterInterface;
+use Phalcon\Assets\Filters\None as AssetsNullFilter;
 use Phalcon\DI;
 
 class DisplayDatatablesAsync implements Renderable, DisplayInterface
@@ -63,11 +64,15 @@ class DisplayDatatablesAsync implements Renderable, DisplayInterface
             }
         }
 
-        $this->di->get('assets')->collection('dataTablesJs')
-            ->addJs('backend-assets/datatables/jquery.dataTables.min.js')
-            ->addJs('backend-assets/datatables/jquery.dataTables_bootstrap.js')
-            ->addJs('backend-assets/datatables/init.js')
-            ->addJs('backend-assets/notify-combined.min.js');
+        $this->di->get('assets')->collection('displayAsyncJs')
+            ->setTargetPath('displayAsync_final.js')
+            ->setTargetUri('backend-assets/displayAsync_final.js')
+            ->addJs('js/datatables/jquery.dataTables.min.js')
+            ->addJs('js/datatables/jquery.dataTables_bootstrap.js')
+            ->addJs('js/datatables/init.js')
+            ->addJs('notify-combined.min.js')
+            ->join(true)
+            ->addFilter(new AssetsNullFilter());
 
         $this->di->get('assets')->collection('dataTablesCss')->addCss('backend-assets/dataTables.bootstrap.css');
     }
