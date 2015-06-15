@@ -1,13 +1,12 @@
 <td>
 	<div class="text-right pull-right" style="width: 90px;">
 		<?php if ($editable): ?>
-			<a href="<?= $editUrl ?>" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i> Edit</a>
+			<a href="<?= $editUrl ?>" class="btn btn-default btn-sm"><i class="fa fa-pencil"></i></a>
 		<?php endif ?>
         <?php if ($deletable): ?>
 			<form action="<?= $deleteUrl ?>" method="POST" style="display:inline-block;">
 				<button class="btn btn-danger btn-sm btn-delete">
 					<i class="fa fa-times"></i>
-                    Del
 				</button>
 			</form>
         <?php endif ?>
