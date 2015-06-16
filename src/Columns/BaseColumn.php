@@ -8,9 +8,7 @@ use Phalcon\DI;
 
 abstract class BaseColumn implements Renderable, ColumnInterface
 {
-    /**
-     * @var \Phalcon\DiInterface
-     */
+
     protected $di;
 
 	/**

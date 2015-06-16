@@ -7,9 +7,7 @@ use Phalcon\DI;
 
 abstract class BaseColumnFilter implements Renderable, ColumnFilterInterface
 {
-    /**
-     * @var \Phalcon\DiInterface
-     */
+
     protected $di;
 	protected $view;
 

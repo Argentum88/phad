@@ -1,14 +1,12 @@
 <?php namespace Argentum88\Phad\Filters;
 
 use Argentum88\Phad\Interfaces\FilterInterface;
+use Phalcon\Mvc\Model\Criteria;
 use Phalcon\DI;
 
 abstract class FilterBase implements FilterInterface
 {
 
-    /**
-     * @var \Phalcon\DiInterface
-     */
     protected $di;
 	protected $name;
 	protected $alias;
@@ -83,6 +81,9 @@ abstract class FilterBase implements FilterInterface
 		return ! is_null($this->value());
 	}
 
+    /**
+     * @param Criteria $query
+     */
 	public function apply($query)
 	{
         $name = $this->name();

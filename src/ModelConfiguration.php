@@ -230,9 +230,4 @@ class ModelConfiguration
         return $this->di->get('url')->get(['for' => 'backend-delete', 'adminModel' => $this->alias(), 'adminModelId' => $id]);
     }
 
-    public function restoreUrl($id)
-    {
-        //return route('admin.model.restore', [$this->alias(), $id]);
-    }
-
 }

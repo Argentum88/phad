@@ -6,9 +6,7 @@ use Phalcon\DI;
 
 abstract class BaseFormItem implements Renderable, FormItemInterface
 {
-    /**
-     * @var \Phalcon\DiInterface
-     */
+
     protected $di;
 
     protected $view;

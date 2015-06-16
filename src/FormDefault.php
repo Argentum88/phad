@@ -12,9 +12,6 @@ class FormDefault implements Renderable, DisplayInterface, FormInterface
 
     protected $validation;
 
-    /**
-     * @var \Phalcon\DiInterface
-     */
     protected $di;
 
     /**

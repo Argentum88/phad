@@ -83,34 +83,4 @@ abstract class NamedFormItem extends BaseFormItem
         $this->instance()->$name = $this->value();
     }
 
-    public function required()
-    {
-        return $this->validationRule('required');
-    }
-
-    public function unique()
-    {
-        return $this->validationRule('_unique');
-    }
-
-    /*public function getValidationRules()
-    {
-        $rules = parent::getValidationRules();
-        array_walk($rules, function (&$item)
-        {
-            if ($item == '_unique')
-            {
-                $table = $this->instance()->getTable();
-                $item = 'unique:' . $table . ',' . $this->name();
-                if ($this->instance()->exists())
-                {
-                    $item .= ',' . $this->instance()->getKey();
-                }
-            }
-        });
-        return [
-            $this->name() => $rules
-        ];
-    }*/
-
 }

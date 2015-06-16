@@ -9,9 +9,6 @@ use Argentum88\Phad\ModelConfiguration;
 class MenuItem implements Renderable
 {
 
-    /**
-     * @var \Phalcon\DiInterface
-     */
     protected $di;
 
 	/**

@@ -59,10 +59,13 @@ class Admin
 	 */
 	public static function modelAliases()
 	{
-		return array_map(function ($model)
-		{
-			return $model->alias();
-		}, static::models());
+		return array_map(
+            function (ModelConfiguration $model)
+            {
+                return $model->alias();
+            },
+            static::models()
+        );
 	}
 
 	/**

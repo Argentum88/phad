@@ -1,28 +1,40 @@
 <?php namespace Argentum88\Phad;
 
+use Argentum88\Phad\Columns\Action;
 use Argentum88\Phad\Columns\Control;
 use Argentum88\Phad\Columns\String;
 use Argentum88\Phad\Columns\NamedColumn;
+use Argentum88\Phad\Interfaces\FilterInterface;
 use Argentum88\Phad\Interfaces\Renderable;
 use Argentum88\Phad\Interfaces\DisplayInterface;
 use Argentum88\Phad\Interfaces\ColumnInterface;
 use Argentum88\Phad\Interfaces\ColumnFilterInterface;
 use Phalcon\Assets\Filters\None as AssetsNullFilter;
 use Phalcon\DI;
+use Phalcon\Mvc\Model\Criteria;
 
 class DisplayDatatablesAsync implements Renderable, DisplayInterface
 {
 
-    /**
-     * @var \Phalcon\DiInterface
-     */
     protected $di;
     protected $columns = [];
     protected $columnFilters = [];
+
+    /**
+     * @var Action[]
+     */
     protected $actions = [];
     protected $filters = [];
+
+    /**
+     * @var FilterInterface[]
+     */
     protected $activeFilters = [];
     protected $controlActive = true;
+
+    /**
+     * @var BaseRepository
+     */
     protected $repository;
     protected $class;
 
@@ -195,7 +207,7 @@ class DisplayDatatablesAsync implements Renderable, DisplayInterface
 
     /**
      * Apply offset and limit to the query
-     * @param $query
+     * @param Criteria $query
      */
     protected function applyOffset($query)
     {
@@ -210,7 +222,7 @@ class DisplayDatatablesAsync implements Renderable, DisplayInterface
 
     /**
      * Apply orders to the query
-     * @param $query
+     * @param Criteria $query
      */
     protected function applyOrders($query)
     {
@@ -230,7 +242,7 @@ class DisplayDatatablesAsync implements Renderable, DisplayInterface
 
     /**
      * Apply search to the query
-     * @param $query
+     * @param Criteria $query
      */
     protected function applySearch($query)
     {
@@ -254,6 +266,9 @@ class DisplayDatatablesAsync implements Renderable, DisplayInterface
         }
     }
 
+    /**
+     * @param Criteria $query
+     */
     protected function applyColumnSearch($query)
     {
         $queryColumns = $this->di->get('request')->getQuery('columns', null, []);
@@ -323,6 +338,9 @@ class DisplayDatatablesAsync implements Renderable, DisplayInterface
         return $this;
     }
 
+    /**
+     * @return $this|ColumnFilterInterface[]
+     */
     public function columnFilters($columnFilters = null)
     {
         if (is_null($columnFilters))
@@ -350,6 +368,9 @@ class DisplayDatatablesAsync implements Renderable, DisplayInterface
         return $this;
     }
 
+    /**
+     * @return ColumnInterface[]
+     */
     public function allColumns()
     {
         $columns = $this->columns();
@@ -370,6 +391,9 @@ class DisplayDatatablesAsync implements Renderable, DisplayInterface
         return $this;
     }
 
+    /**
+     * @return $this|FilterInterface[]
+     */
     public function filters($filters = null)
     {
         if (is_null($filters))

@@ -20,6 +20,8 @@ interface FormItemInterface
 	 */
 	public function getValidationRules();
 
+    public function validation($validation);
+
 	/**
 	 * Save form item
 	 */

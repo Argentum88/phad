@@ -1,13 +1,11 @@
 <?php namespace Argentum88\Phad;;
 
 use Phalcon\DI;
+use Phalcon\Mvc\Model\Criteria;
 
 class BaseRepository
 {
 
-    /**
-     * @var \Phalcon\DiInterface
-     */
     protected $di;
 
 	/**
@@ -15,11 +13,13 @@ class BaseRepository
 	 * @var string
 	 */
 	protected $class;
+
 	/**
 	 * Repository related model instance
 	 * @var mixed
 	 */
 	protected $model;
+
 	/**
 	 * Eager loading relations
 	 * @var string[]
@@ -57,7 +57,7 @@ class BaseRepository
 
 	/**
 	 * Get base query
-	 * @return mixed
+	 * @return Criteria
 	 */
 	public function query()
 	{
@@ -86,6 +86,8 @@ class BaseRepository
 	public function findMany($ids)
 	{
         $modelName = $this->model;
+
+        /** @var Criteria $query */
         $query = $modelName::query();
 
         return $query->inWhere('id', $ids)->execute();
@@ -98,15 +100,6 @@ class BaseRepository
 	public function delete($id)
 	{
 		$this->find($id)->delete();
-	}
-
-	/**
-	 * Restore model instance by id
-	 * @param int $id
-	 */
-	public function restore($id)
-	{
-		$this->query()->onlyTrashed()->find($id)->restore();
 	}
 
 	/**
