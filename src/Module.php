@@ -8,13 +8,9 @@ namespace Argentum88\Phad {
     use Phalcon\Assets\Manager as AssetsManager;
     use Phalcon\Assets\Filters\None as AssetsNullFilter;
     use Phalcon\Flash\Session as FlashSession;
+    use Phalcon\Mvc\View\Simple;
     use Phalcon\Session\Adapter\Files as Session;
 
-    /**
-     * Class Module
-     *
-     * @package App\Modules\Backend
-     */
     class Module implements ModuleDefinitionInterface
     {
 
@@ -48,7 +44,7 @@ namespace Argentum88\Phad {
 
             $di['viewSimple'] = function () {
 
-                $view = new \Phalcon\Mvc\View\Simple();
+                $view = new Simple();
                 $view->setViewsDir(__DIR__ . '/Views/');
 
                 return $view;
@@ -79,7 +75,7 @@ namespace Argentum88\Phad {
 
                 $options = [
                     'sourceBasePath' => __DIR__ . '/Assets/',
-                    'targetBasePath' => $di['config']->paths->public . '/backend-assets/'
+                    'targetBasePath' => __DIR__ . '/../../../../public/backend-assets/'
                 ];
                 $assets  = new AssetsManager($options);
 
