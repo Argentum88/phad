@@ -4,11 +4,6 @@ namespace Argentum88\Phad\Controllers {
 
     use Phalcon\Mvc\View;
 
-    /**
-     * Class ErrorController
-     *
-     * @package App\Modules\Backend\Controllers
-     */
     class ErrorController extends BaseController
     {
 

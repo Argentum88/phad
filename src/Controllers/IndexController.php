@@ -8,7 +8,6 @@ namespace Argentum88\Phad\Controllers {
     /**
      * Class IndexController
      *
-     * @package App\Modules\Backend\Controllers
      * @property \Phalcon\Mvc\View view
      */
     class IndexController extends BaseController

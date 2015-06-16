@@ -4,11 +4,6 @@ namespace Argentum88\Phad\Controllers {
 
     use Phalcon\Mvc\Controller;
 
-    /**
-     * Class BaseController
-     *
-     * @package App\Modules\Backend\Controllers
-     */
     class BaseController extends Controller
     {
 
