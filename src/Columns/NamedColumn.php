@@ -48,7 +48,7 @@ abstract class NamedColumn extends BaseColumn
 		$part = array_shift($parts);
 		if ($instance instanceof Collection)
 		{
-			//$instance = $instance->lists($part);
+
 		} else
 		{
 			$instance = $instance->{$part};

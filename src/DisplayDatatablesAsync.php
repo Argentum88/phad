@@ -152,8 +152,6 @@ class DisplayDatatablesAsync implements Renderable, DisplayInterface
         $params = $this->getParams();
         $attributes = $this->di->get('request')->getQuery();
         unset($attributes['_url']);
-        //array_unshift($attributes, $this->name());
-        //array_unshift($attributes, $this->model()->alias());
         $params['url'] = $this->di->get('url')->get(['for' => 'backend-display-async', 'adminModel' => $this->model()->alias()], $attributes);
         return $this->di->get('viewSimple')->render('Display/datatablesAsync', $params);
     }
