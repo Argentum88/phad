@@ -80,11 +80,9 @@ class BaseRepository
 	 */
 	public function findMany($ids)
 	{
-        /** @var Model $modelName */
-        $modelName = $this->class;
-
-        /** @var Builder $query */
-        $query = $modelName::query();
+        $query = new Builder(null);
+        $query->setDI($this->di);
+        $query->from($this->class);
 
         return $query->inWhere('id', $ids)->getQuery()->execute();
 	}
