@@ -28,7 +28,7 @@ class String extends NamedColumn
          $name = $this->name();
          if ($repository->hasColumn($name)) {
 
-             $query->orWhere(get_class($this->instance) . ".$name LIKE %$search%");
+             $query->orWhere($query->getModelName() . ".$name LIKE '%$search%'");
          } else {
 
              $query->orWhere("$name LIKE '%$search%'");
