@@ -233,8 +233,7 @@ class DisplayDatatablesAsync implements Renderable, DisplayInterface
             $column = $this->allColumns()[$columnIndex];
             if ($column instanceof NamedColumn && $column->isOrderable())
             {
-                $name = $column->name();
-                $query->orderBy("$name  $orderDirection");
+                $column->order($this->repository, $query, $orderDirection);
             }
         }
     }
