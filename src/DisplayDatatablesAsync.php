@@ -37,6 +37,7 @@ class DisplayDatatablesAsync implements Renderable, DisplayInterface
      */
     protected $repository;
     protected $class;
+    protected $belongsTo = [];
 
     /**
      * Datatables name
@@ -56,7 +57,7 @@ class DisplayDatatablesAsync implements Renderable, DisplayInterface
     public function initialize()
     {
         $this->repository = new BaseRepository($this->class);
-        //$this->repository->with($this->with());
+        $this->repository->belongsTo($this->belongsTo());
 
         $this->initializeFilters();
 
@@ -255,11 +256,7 @@ class DisplayDatatablesAsync implements Renderable, DisplayInterface
         {
             if ($column instanceof String)
             {
-                $name = $column->name();
-                if ($this->repository->hasColumn($name))
-                {
-                    $query->orWhere("$name LIKE '%$search%'");
-                }
+                $column->search($this->repository, $query, $search);
             }
         }
     }
@@ -309,6 +306,17 @@ class DisplayDatatablesAsync implements Renderable, DisplayInterface
             $result['data'][] = $_row;
         }
         return $result;
+    }
+
+    public function belongsTo($belongsTo = null)
+    {
+        if (is_null($belongsTo))
+        {
+            return $this->belongsTo;
+        }
+
+        $this->belongsTo = $belongsTo;
+        return $this;
     }
 
     /**

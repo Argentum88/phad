@@ -19,12 +19,7 @@ class BaseRepository
 	 * @var mixed
 	 */
 	protected $model;
-
-	/**
-	 * Eager loading relations
-	 * @var string[]
-	 */
-	protected $with = [];
+    protected $belongsTo = [];
 
 	/**
 	 * @param string $class
@@ -36,24 +31,16 @@ class BaseRepository
 		$this->model($this->class);
 	}
 
-	/**
-	 * Get or set eager loading relations
-	 * @param string|string[]|null $with
-	 * @return $this|string[]
-	 */
-	public function with($with = null)
-	{
-		if (is_null($with))
-		{
-			return $this->with;
-		}
-		if ( ! is_array($with))
-		{
-			$with = func_get_args();
-		}
-		$this->with = $with;
-		return $this;
-	}
+    public function belongsTo($belongsTo = null)
+    {
+        if (is_null($belongsTo))
+        {
+            return $this->belongsTo;
+        }
+
+        $this->belongsTo = $belongsTo;
+        return $this;
+    }
 
 	/**
 	 * Get base query
@@ -62,8 +49,16 @@ class BaseRepository
 	public function query()
 	{
         $modelName = $this->model;
+
+        /** @var Criteria $query */
 		$query = $modelName::query();
-		//$query->with($this->with());
+
+        $belongsTo = $this->belongsTo();
+        if (!empty($belongsTo)) {
+
+            $query->innerJoin($belongsTo['reference_model'], $belongsTo['condition'], $belongsTo['alias']);
+        }
+
 		return $query;
 	}
 
