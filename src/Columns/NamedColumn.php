@@ -1,7 +1,7 @@
 <?php namespace Argentum88\Phad\Columns;
 
 use Phalcon\Mvc\Model\Resultset as Collection;
-use Phalcon\Mvc\Model\Criteria;
+use Phalcon\Mvc\Model\Query\Builder;
 use Argentum88\Phad\BaseRepository;
 
 abstract class NamedColumn extends BaseColumn
@@ -64,7 +64,7 @@ abstract class NamedColumn extends BaseColumn
 
     /**
      * @param BaseRepository $repository
-     * @param Criteria $query
+     * @param Builder $query
      * @param string $orderDirection
      */
     public function order($repository, $query, $orderDirection)
@@ -72,7 +72,7 @@ abstract class NamedColumn extends BaseColumn
         $name = $this->name();
         if ($repository->hasColumn($name)) {
 
-            $query->orderBy($query->getModelName() . ".$name $orderDirection");
+            $query->orderBy($query->getFrom() . ".$name $orderDirection");
         } else {
 
             $query->orderBy("$name $orderDirection");

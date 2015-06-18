@@ -1,7 +1,8 @@
 <?php namespace Argentum88\Phad;;
 
 use Phalcon\DI;
-use Phalcon\Mvc\Model\Criteria;
+use Phalcon\Mvc\Model;
+use Phalcon\Mvc\Model\Query\Builder;
 
 class BaseRepository
 {
@@ -44,14 +45,13 @@ class BaseRepository
 
 	/**
 	 * Get base query
-	 * @return Criteria
+	 * @return Builder
 	 */
 	public function query()
 	{
-        $modelName = $this->model;
-
-        /** @var Criteria $query */
-		$query = $modelName::query();
+        $query = new Builder(null);
+        $query->setDI($this->di);
+        $query->from($this->class);
 
         $belongsTo = $this->belongsTo();
         if (!empty($belongsTo)) {
@@ -69,7 +69,7 @@ class BaseRepository
 	 */
 	public function find($id)
 	{
-        $modelName = $this->model;
+        $modelName = $this->class;
 		return $modelName::findFirstById($id);
 	}
 
@@ -80,12 +80,13 @@ class BaseRepository
 	 */
 	public function findMany($ids)
 	{
-        $modelName = $this->model;
+        /** @var Model $modelName */
+        $modelName = $this->class;
 
-        /** @var Criteria $query */
+        /** @var Builder $query */
         $query = $modelName::query();
 
-        return $query->inWhere('id', $ids)->execute();
+        return $query->inWhere('id', $ids)->getQuery()->execute();
 	}
 
 	/**
@@ -119,7 +120,7 @@ class BaseRepository
 	 */
 	public function hasColumn($column)
 	{
-        $model = new $this->model;
+        $model = new $this->class;
         $metadata = $this->di->get('modelsMetadata');
         return $metadata->hasAttribute($model, $column);
 	}

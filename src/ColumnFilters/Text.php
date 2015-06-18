@@ -1,7 +1,7 @@
 <?php namespace Argentum88\Phad\ColumnFilters;
 
 use Phalcon\Assets\Filters\None as AssetsNullFilter;
-use Phalcon\Mvc\Model\Criteria;
+use Phalcon\Mvc\Model\Query\Builder;
 use Argentum88\Phad\BaseRepository;
 
 class Text extends BaseColumnFilter
@@ -45,7 +45,7 @@ class Text extends BaseColumnFilter
     /**
      * @param BaseRepository $repository
      * @param mixed $column
-     * @param Criteria $query
+     * @param Builder $query
      * @param string $search
      */
 	public function apply($repository, $column, $query, $search)
@@ -53,7 +53,7 @@ class Text extends BaseColumnFilter
 		$name = $column->name();
 		if ($repository->hasColumn($name)) {
 
-            $query->andWhere($query->getModelName() . ".$name LIKE '%$search%'");
+            $query->andWhere($query->getFrom() . ".$name LIKE '%$search%'");
         } else {
 
             $query->andWhere("$name LIKE '%$search%'");

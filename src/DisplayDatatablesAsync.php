@@ -11,7 +11,7 @@ use Argentum88\Phad\Interfaces\ColumnInterface;
 use Argentum88\Phad\Interfaces\ColumnFilterInterface;
 use Phalcon\Assets\Filters\None as AssetsNullFilter;
 use Phalcon\DI;
-use Phalcon\Mvc\Model\Criteria;
+use Phalcon\Mvc\Model\Query\Builder;
 
 class DisplayDatatablesAsync implements Renderable, DisplayInterface
 {
@@ -181,17 +181,17 @@ class DisplayDatatablesAsync implements Renderable, DisplayInterface
     public function renderAsync()
     {
         $query = $this->repository->query();
-        $totalCount = count($query->execute());
+        $totalCount = count($query->getQuery()->execute());
 
         $this->applySearch($query);
         $this->applyColumnSearch($query);
         $this->modifyQuery($query);
 
-        $filteredCount = count($query->execute());
+        $filteredCount = count($query->getQuery()->execute());
 
         $this->applyOrders($query);
         $this->applyOffset($query);
-        $collection = $query->execute();
+        $collection = $query->getQuery()->execute();
 
         return $this->prepareDatatablesStructure($collection, $totalCount, $filteredCount);
     }
@@ -206,7 +206,7 @@ class DisplayDatatablesAsync implements Renderable, DisplayInterface
 
     /**
      * Apply offset and limit to the query
-     * @param Criteria $query
+     * @param Builder $query
      */
     protected function applyOffset($query)
     {
@@ -221,7 +221,7 @@ class DisplayDatatablesAsync implements Renderable, DisplayInterface
 
     /**
      * Apply orders to the query
-     * @param Criteria $query
+     * @param Builder $query
      */
     protected function applyOrders($query)
     {
@@ -240,7 +240,7 @@ class DisplayDatatablesAsync implements Renderable, DisplayInterface
 
     /**
      * Apply search to the query
-     * @param Criteria $query
+     * @param Builder $query
      */
     protected function applySearch($query)
     {
@@ -261,7 +261,7 @@ class DisplayDatatablesAsync implements Renderable, DisplayInterface
     }
 
     /**
-     * @param Criteria $query
+     * @param Builder $query
      */
     protected function applyColumnSearch($query)
     {

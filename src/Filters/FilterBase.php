@@ -1,7 +1,7 @@
 <?php namespace Argentum88\Phad\Filters;
 
 use Argentum88\Phad\Interfaces\FilterInterface;
-use Phalcon\Mvc\Model\Criteria;
+use Phalcon\Mvc\Model\Query\Builder;
 use Phalcon\DI;
 
 abstract class FilterBase implements FilterInterface
@@ -82,7 +82,7 @@ abstract class FilterBase implements FilterInterface
 	}
 
     /**
-     * @param Criteria $query
+     * @param Builder $query
      */
 	public function apply($query)
 	{
