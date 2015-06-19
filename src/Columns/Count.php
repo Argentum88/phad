@@ -1,5 +1,8 @@
 <?php namespace Argentum88\Phad\Columns;
 
+use Phalcon\Mvc\Model\Query\Builder;
+use Argentum88\Phad\BaseRepository;
+
 class Count extends NamedColumn
 {
 
@@ -14,5 +17,16 @@ class Count extends NamedColumn
 		];
         return $this->di->get('viewSimple')->render('Columns/count', $params);
 	}
+
+    /**
+     * @param BaseRepository $repository
+     * @param Builder $query
+     * @param string $orderDirection
+     */
+    public function order($repository, $query, $orderDirection)
+    {
+        $name = $this->name();
+        $query->orderBy("count($name.id) $orderDirection");
+    }
 
 }

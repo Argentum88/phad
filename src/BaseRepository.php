@@ -3,6 +3,7 @@
 use Phalcon\DI;
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Query\Builder;
+use Phalcon\Mvc\Model\RelationInterface;
 
 class BaseRepository
 {
@@ -42,8 +43,9 @@ class BaseRepository
         $query->from($this->class);
 
         $manager = $this->model()->getModelsManager();
-        $belongsToRelations = $manager->getBelongsTo($this->model());
 
+        /** @var RelationInterface[] $belongsToRelations */
+        $belongsToRelations = $manager->getBelongsTo($this->model());
         if (!empty($belongsToRelations)) {
 
             foreach ($belongsToRelations as $belongsToRelation) {
@@ -53,6 +55,21 @@ class BaseRepository
                 $field           = $belongsToRelation->getFields();
                 $alias           = $belongsToRelation->getOptions()['alias'];
                 $query->innerJoin($referencedModel, "$alias.$referencedField = $this->class.$field", $alias);
+            }
+        }
+
+        /** @var RelationInterface[] $hasManyRelations */
+        $hasManyRelations = $manager->getHasMany($this->model());
+        if (!empty($hasManyRelations)) {
+
+            foreach ($hasManyRelations as $hasManyRelation) {
+
+                $referencedModel = $hasManyRelation->getReferencedModel();
+                $referencedField = $hasManyRelation->getReferencedFields();
+                $field           = $hasManyRelation->getFields();
+                $alias           = $hasManyRelation->getOptions()['alias'];
+                $query->leftJoin($referencedModel, "$alias.$referencedField = $this->class.$field", $alias);
+                $query->groupBy("$this->class.id");
             }
         }
 
