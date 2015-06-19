@@ -20,7 +20,6 @@ class BaseRepository
 	 * @var mixed
 	 */
 	protected $model;
-    protected $belongsTo = [];
 
 	/**
 	 * @param string $class
@@ -29,19 +28,8 @@ class BaseRepository
 	{
         $this->di = DI::getDefault();
 		$this->class = $class;
-		$this->model($this->class);
+		$this->model(new $this->class);
 	}
-
-    public function belongsTo($belongsTo = null)
-    {
-        if (is_null($belongsTo))
-        {
-            return $this->belongsTo;
-        }
-
-        $this->belongsTo = $belongsTo;
-        return $this;
-    }
 
 	/**
 	 * Get base query
@@ -53,13 +41,22 @@ class BaseRepository
         $query->setDI($this->di);
         $query->from($this->class);
 
-        $belongsTo = $this->belongsTo();
-        if (!empty($belongsTo)) {
+        $manager = $this->model()->getModelsManager();
+        $belongsToRelations = $manager->getBelongsTo($this->model());
 
-            $query->innerJoin($belongsTo['reference_model'], $belongsTo['condition'], $belongsTo['alias']);
+        if (!empty($belongsToRelations)) {
+
+            foreach ($belongsToRelations as $belongsToRelation) {
+
+                $referencedModel = $belongsToRelation->getReferencedModel();
+                $referencedField = $belongsToRelation->getReferencedFields();
+                $field           = $belongsToRelation->getFields();
+                $alias           = $belongsToRelation->getOptions()['alias'];
+                $query->innerJoin($referencedModel, "$alias.$referencedField = $this->class.$field", $alias);
+            }
         }
 
-		return $query;
+        return $query;
 	}
 
 	/**
@@ -99,7 +96,7 @@ class BaseRepository
 	/**
 	 * Get or set repository related model intance
 	 * @param mixed|null $model
-	 * @return $this|mixed
+	 * @return $this|Model
 	 */
 	public function model($model = null)
 	{
@@ -118,7 +115,7 @@ class BaseRepository
 	 */
 	public function hasColumn($column)
 	{
-        $model = new $this->class;
+        $model = $this->model();
         $metadata = $this->di->get('modelsMetadata');
         return $metadata->hasAttribute($model, $column);
 	}
