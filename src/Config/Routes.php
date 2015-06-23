@@ -35,6 +35,15 @@ namespace Argentum88\Phad\Config {
             $this->add('/{adminModel}/{adminModelId:[\d]+}/delete', ['action' => 'delete'])->setName('backend-delete');
             $this->add('/{adminModel}/{adminModelId:[\d]+}/edit', ['action' => 'edit'])->setName('backend-edit');
             $this->add('/{adminModel}/create', ['action' => 'create'])->setName('backend-create');
+
+            $this->add(
+                '/administrator/login',
+                [
+                    'namespace'  => 'Argentum88\Phad\Auth\Controllers',
+                    'controller' => 'Administrator',
+                    'action'     => 'login'
+                ]
+            )->setName('backend-login');
         }
     }
 }
