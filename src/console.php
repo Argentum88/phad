@@ -6,6 +6,8 @@ use Phalcon\Config;
 use Phalcon\Db\Adapter\Pdo\Mysql;
 use Phalcon\CLI\Dispatcher;
 
+include(__DIR__ . '/../../../autoload.php');
+
 $di = new CliDI();
 
 $di['phadConfig'] = function () {
