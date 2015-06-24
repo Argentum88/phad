@@ -13,7 +13,7 @@ class AdministratorController extends Controller
     {
         if(true === $this->phadAuth->isUserSignedIn())
         {
-            $this->response->redirect(array('action' => 'profile'));
+            $this->response->redirect($this->url->get(['for' => 'backend-index']));
         }
 
         $form = new LoginForm();

@@ -42,9 +42,7 @@ class Auth extends Component
             'id'    => $user->id,
             'name'  => $user->name,
         );
-        if ($user->profile) {
-            $st_identity['profile_picture'] = $user->profile->getPicture();
-        }
+
         $this->session->set('phad-auth-identity', $st_identity);
     }
 
