@@ -13,6 +13,15 @@ namespace Argentum88\Phad\Controllers {
     class IndexController extends BaseController
     {
 
+        public function beforeExecuteRoute($dispatcher)
+        {
+
+            if (!$this->phadAuth->isUserSignedIn()) {
+
+                $this->response->redirect($this->url->get(['for' => 'backend-login']));
+            }
+        }
+
         public function indexAction()
         {
 

@@ -44,6 +44,15 @@ namespace Argentum88\Phad\Config {
                     'action'     => 'login'
                 ]
             )->setName('backend-login');
+
+            $this->add(
+                '/administrator/logout',
+                [
+                    'namespace'  => 'Argentum88\Phad\Auth\Controllers',
+                    'controller' => 'Administrator',
+                    'action'     => 'logout'
+                ]
+            )->setName('backend-logout');
         }
     }
 }

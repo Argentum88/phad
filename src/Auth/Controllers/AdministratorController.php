@@ -26,4 +26,10 @@ class AdministratorController extends Controller
 
         $this->view->form = $form;
     }
+
+    public function logoutAction()
+    {
+        $this->phadAuth->remove();
+        return $this->response->redirect($this->url->get(['for' => 'backend-login']));
+    }
 } 
