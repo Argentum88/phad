@@ -71,7 +71,7 @@ namespace Argentum88\Phad {
                 return $session;
             };
 
-            $di['auth'] = function () {
+            $di['phadAuth'] = function () {
 
                 return new Auth();
             };

@@ -11,7 +11,7 @@ class AdministratorController extends Controller
 
     public function loginAction()
     {
-        if(true === $this->auth->isUserSignedIn())
+        if(true === $this->phadAuth->isUserSignedIn())
         {
             $this->response->redirect(array('action' => 'profile'));
         }
@@ -19,7 +19,7 @@ class AdministratorController extends Controller
         $form = new LoginForm();
 
         try {
-            $this->auth->login($form);
+            $this->phadAuth->login($form);
         } catch (AuthException $e) {
             $this->flashSession->error($e->getMessage());
         }

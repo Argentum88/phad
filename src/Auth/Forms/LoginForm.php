@@ -13,7 +13,8 @@ class LoginForm extends Form
     public function initialize()
     {
         $name = new Text('name', array(
-                'placeholder' => 'Name'
+                'placeholder' => 'Name',
+                'class'       => 'form-control'
             ));
         $name->addValidators(array(
                 new PresenceOf(array(
@@ -23,7 +24,8 @@ class LoginForm extends Form
         $this->add($name);
 
         $password = new Password('password', array(
-                'placeholder' => 'Password'
+                'placeholder' => 'Password',
+                'class'       => 'form-control'
             ));
         $password->addValidator(
             new PresenceOf(array(
