@@ -3,6 +3,7 @@
 namespace Argentum88\Phad {
 
     use Argentum88\Phad\Auth\Auth;
+    use Phalcon\Config;
     use Phalcon\Loader;
     use Phalcon\Mvc\View as ViewEngine;
     use Phalcon\Mvc\ModuleDefinitionInterface;
@@ -29,6 +30,12 @@ namespace Argentum88\Phad {
          */
         public function registerServices($di)
         {
+            $di['phadConfig'] = function () {
+
+                $config = require(__DIR__ . '/../../../../phad-config.php');
+                return new Config($config);
+            };
+
             Admin::instance();
 
             require(__DIR__ . '/../../../../app/Config/Phad.php');
