@@ -17,7 +17,7 @@ class Auth extends Component
      */
     public function check($credentials)
     {
-        $user = PhadAdministrators::findFirstByEmail(strtolower($credentials['email']));
+        $user = PhadAdministrators::findFirstByName(strtolower($credentials['name']));
 
         if ($user == false) {
 
@@ -66,7 +66,7 @@ class Auth extends Component
                 }
             } else {
                 $this->check(array(
-                        'email'    => $this->request->getPost('email'),
+                        'name'    => $this->request->getPost('name'),
                         'password' => $this->request->getPost('password'),
                     ));
 
