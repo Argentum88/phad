@@ -2,6 +2,7 @@
 
 namespace Argentum88\Phad {
 
+    use Argentum88\Phad\Auth\Auth;
     use Phalcon\Loader;
     use Phalcon\Mvc\View as ViewEngine;
     use Phalcon\Mvc\ModuleDefinitionInterface;
@@ -70,6 +71,10 @@ namespace Argentum88\Phad {
                 return $session;
             };
 
+            $di['auth'] = function () {
+
+                return new Auth();
+            };
 
             $di['assets'] = function () use ($di) {
 
