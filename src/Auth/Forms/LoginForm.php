@@ -34,7 +34,7 @@ class LoginForm extends Form
         );
         $this->add($password);
 
-        $this->add(new Submit('go', array(
+        $this->add(new Submit('log in', array(
                     'class' => 'btn btn-success'
                 )));
     }
