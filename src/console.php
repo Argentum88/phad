@@ -18,7 +18,7 @@ $di['phadConfig'] = function () {
 
 $di['db'] = function () use ($di) {
 
-    return new Mysql($di['config']->database->toArray());
+    return new Mysql($di['phadConfig']->database->toArray());
 };
 
 $di['dispatcher'] = function () {
