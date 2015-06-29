@@ -4,7 +4,7 @@ namespace Argentum88\Phad\Tasks;
 
 use Phalcon\CLI\Task;
 
-class InstallTack extends Task
+class InstallTask extends Task
 {
     public function mainAction()
     {
