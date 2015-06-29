@@ -28,3 +28,7 @@ Phad is administrative interface builder for Phalcon framework, that is based on
         php ./vendor/argentum88/phad/src/console.php install
 
 5. Import the phad.sql into your database
+
+## Usage
+
+Now go to the **your_site_url/admin** and use default credentials **admin / 123456789**
