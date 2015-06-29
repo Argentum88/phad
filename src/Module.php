@@ -38,7 +38,7 @@ namespace Argentum88\Phad {
 
             Admin::instance();
 
-            require(__DIR__ . '/../../../../app/Config/Phad.php');
+            require(__DIR__ . '/../../../../Phad/Phad.php');
 
             $di['view'] = function () {
 

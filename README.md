@@ -24,4 +24,7 @@ Phad is administrative interface builder for Phalcon framework, that is based on
         'className' => 'Argentum88\Phad\Module'
     ]]);
     ```
-4. 
+4. Run command
+        php ./vendor/argentum88/phad/src/console.php install
+
+5. Import the phad.sql into your database
