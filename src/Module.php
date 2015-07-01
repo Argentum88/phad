@@ -30,15 +30,15 @@ namespace Argentum88\Phad {
          */
         public function registerServices($di)
         {
+            Admin::instance();
+
+            require(__DIR__ . '/../../../../phad/phad.php');
+
             $di['phadConfig'] = function () {
 
                 $config = require(__DIR__ . '/../../../../phad-config.php');
                 return new Config($config);
             };
-
-            Admin::instance();
-
-            require(__DIR__ . '/../../../../Phad/Phad.php');
 
             $di['view'] = function () {
 
