@@ -14,8 +14,9 @@ class InstallTask extends Task
         mkdir($projectRoot . 'phad', 0755);
         copy(__DIR__ . '/../../templates/phad.php', $projectRoot . 'phad/phad.php');
 
-        $this->recurseCopy(__DIR__ . '/../../templates/backend-assets', $projectRoot . 'public');
-        //copy(__DIR__ . '/../../templates/backend-assets', $projectRoot . 'public');
+        mkdir($projectRoot . 'public/backend-assets');
+        chmod($projectRoot . 'public/backend-assets', 0777);
+        $this->recurseCopy(__DIR__ . '/../../templates/backend-assets', $projectRoot . 'public/backend-assets');
     }
 
     protected function recurseCopy($src,$dst) {

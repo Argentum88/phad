@@ -1,0 +1,15 @@
+<div class="form-group
+
+    <?php
+        $messages = $validation->getMessages();
+        echo $messages ? ($validation->getMessages()->filter($name) ? 'has-error' : '') : '';
+    ?>">
+
+    <label for="<?= $name ?>"><?= $label ?></label>
+	<textarea class="ckeditor" name="<?= $name ?>"><?= $value ?></textarea>
+    <?php
+        if ($messages) {
+            $this->partial('Formitem/errors');
+        }
+    ?>
+</div>
