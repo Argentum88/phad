@@ -14,6 +14,6 @@ class InstallTask extends Task
         mkdir($projectRoot . 'phad', 0755);
         copy(__DIR__ . '/../../templates/phad.php', $projectRoot . 'phad/phad.php');
 
-        mkdir($projectRoot . 'public/backend-assets', 0777);
+        copy(__DIR__ . '/../../templates/backend-assets', $projectRoot . 'public');
     }
 }
