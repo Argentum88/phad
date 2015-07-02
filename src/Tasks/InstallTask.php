@@ -9,14 +9,24 @@ class InstallTask extends Task
     public function mainAction()
     {
         $projectRoot = __DIR__ . '/../../../../../';
-        copy(__DIR__ . '/../../templates/phad-config.php', $projectRoot . 'phad-config.php');
 
-        mkdir($projectRoot . 'phad', 0755);
-        copy(__DIR__ . '/../../templates/phad.php', $projectRoot . 'phad/phad.php');
+        if (!is_file($projectRoot . 'phad-config.php')) {
 
-        mkdir($projectRoot . 'public/backend-assets');
-        chmod($projectRoot . 'public/backend-assets', 0777);
-        $this->recurseCopy(__DIR__ . '/../../templates/backend-assets', $projectRoot . 'public/backend-assets');
+            copy(__DIR__ . '/../../templates/phad-config.php', $projectRoot . 'phad-config.php');
+        }
+
+        if (!is_dir($projectRoot . 'phad')) {
+
+            mkdir($projectRoot . 'phad', 0755);
+            copy(__DIR__ . '/../../templates/phad.php', $projectRoot . 'phad/phad.php');
+        }
+
+        if (!is_dir($projectRoot . 'public/backend-assets')) {
+
+            mkdir($projectRoot . 'public/backend-assets');
+            chmod($projectRoot . 'public/backend-assets', 0777);
+            $this->recurseCopy(__DIR__ . '/../../templates/backend-assets', $projectRoot . 'public/backend-assets');
+        }
     }
 
     protected function recurseCopy($src,$dst) {

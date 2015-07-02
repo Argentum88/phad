@@ -16,9 +16,6 @@ namespace Argentum88\Phad {
     class Module implements ModuleDefinitionInterface
     {
 
-        /**
-         *
-         */
         public function registerAutoloaders()
         {
 
